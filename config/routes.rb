@@ -1,5 +1,7 @@
 MyList::Application.routes.draw do
 
+  resources :users
+
   match '/about', to: 'static_pages#about', via: 'get'
   match '/signup', to: 'users#new', via: 'get'
 
