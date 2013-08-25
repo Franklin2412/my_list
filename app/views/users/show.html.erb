@@ -3,6 +3,7 @@
 	<div class="span5">
 		<section>
 			<%= @user.name %>
+			<%= link_to "Sign out", signout_path, method: 'delete' %>
 		</section>
 	</div>
 </div>
