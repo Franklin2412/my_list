@@ -4,6 +4,7 @@
 		<section>
 			<%= @user.name %>
 			<%= link_to "Sign out", signout_path, method: 'delete' %>
+			<%= link_to "Update profile", edit_user_path(current_user) %> 
 		</section>
 	</div>
 </div>

@@ -30,4 +30,15 @@ describe "AuthenticationPages" do
 			end
 		end
 	end
+	describe "Authorization" do
+		describe " For non signed in users" do 
+			let(:user) { FactoryGirl.create(:user) }
+			describe "in users control" do
+				describe "submitting update action" do
+					before { patch user_path(user) }
+					specify { expect(response).to redirect_to(signin_path) }
+				end
+			end
+		end
+	end
 end

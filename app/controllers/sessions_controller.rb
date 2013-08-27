@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+	
+	before_action :signed_out_user, only: [:new, :create]
+	
 	def new
 	end
 	def create
@@ -15,4 +18,8 @@ class SessionsController < ApplicationController
 		sign_out
 		redirect_to signin_path
 	end
+	private
+		def signed_out_user
+			redirect_to current_user if signed_in?
+		end
 end
