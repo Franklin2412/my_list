@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
 	before_action :signed_in_user , only: [:edit, :update, :show] 
 	before_action :correct_user , only:[:edit, :update]
+	before_action :show_to_correct_user, only: [:show]
 
 	def new
 		@user = User.new
@@ -43,5 +44,9 @@ class UsersController < ApplicationController
 		def correct_user
 			@user = User.find(params[:id])
 			redirect_to @user unless current_user?(@user)
+		end
+		def show_to_correct_user
+			@user = User.find(params[:id])
+			redirect_to current_user unless current_user?(@user)
 		end
 end

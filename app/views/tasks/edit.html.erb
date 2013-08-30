@@ -1,0 +1,12 @@
+<% provide(:title, "Edit Task") %>
+<div class="row">
+	<%= form_for @task do |f| %>
+		<%= render 'error_list' %>
+		<%= f.hidden_field :user_id %>
+		<%= f.label :task_name %>
+		<%= f.text_field :task_name %>
+		<%= f.check_box :complete %>
+		<%= f.label :complete %>
+		<%= f.submit "Edit" %>
+	<% end %>
+</div>

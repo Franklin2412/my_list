@@ -5,6 +5,14 @@
 			<%= @user.name %>
 			<%= link_to "Sign out", signout_path, method: 'delete' %>
 			<%= link_to "Update profile", edit_user_path(current_user) %> 
+			<%= link_to "New Task", new_task_path(:user_id => @user) %>
 		</section>
 	</div>
+</div>
+<div class="row">
+	<% for task in @user.tasks %>
+		<%= task.task_name %>
+		<%= link_to "Edit", edit_task_path(task) %>
+		<%= link_to "Destroy", task, :confirm => "Are you sure?", :method => :delete %>
+	<% end %>
 </div>
