@@ -1,18 +1,46 @@
 <% provide(:title, @user.name) %>
-<div class="row">
-	<div class="span5">
-		<section>
-			<%= @user.name %>
-			<%= link_to "Sign out", signout_path, method: 'delete' %>
-			<%= link_to "Update profile", edit_user_path(current_user) %> 
-			<%= link_to "New Task", new_task_path(:user_id => @user) %>
-		</section>
+<div id="profile-header">
+	<div id="profile-opacity">
+	    <div id="profile-header-text">
+			<h1> MYLIST </h1>
+			<div id="profile-header-menu">
+				<ul>
+					<li><%= link_to "New Task", new_task_path(:user_id => @user) %> </li>
+					<li><%= link_to "Update profile", edit_user_path(current_user) %> </li>					
+					<li><%= link_to "Sign out", signout_path, method: 'delete' %> </li>
+				</ul>
+			</div>	
+		</div>
 	</div>
 </div>
-<div class="row">
+<div id="profile-user-details">
+	<div> Hello </div>
+	<%= @user.name %>
+</div>
+<div id="profile-user-task-details">
+	<strong>
+		<div class="medium-space"> TASK NAME </div>
+		<div class="large-space"> DESCRIPTION </div>
+		<div class="small-space"> STATUS </div>
+		<div class="medium-space"> PRIORITY </div>
+		<div class="small-space"> EDIT </div>
+		<div class="small-space"> REMOVE </div>
+	</strong>
 	<% for task in @user.tasks %>
-		<%= task.task_name %>
-		<%= link_to "Edit", edit_task_path(task) %>
-		<%= link_to "Destroy", task, :confirm => "Are you sure?", :method => :delete %>
+		<p>
+			<div id="profile-user-task-details-border-bottom">
+				<div class="medium-space"><%= task.task_name %></div>
+				<div class="large-space"> DESCRIPTION </div>
+				<% if task.complete == true %>
+					<div class="small-space"> Done </div>
+				<% else %>
+					<div class="small-space"> Soon </div>
+				<% end %>
+				<div class="medium-space"> PRIORITY </div>
+					<div class="small-space"><%= link_to "Edit", edit_task_path(task) %></div>
+				<div class="small-space"><%= link_to "Destroy", task, :confirm => "Are you sure?", :method => :elete %>
+				</div>	
+			</div>
+		</p>
 	<% end %>
 </div>
